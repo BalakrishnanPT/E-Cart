@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             )
 
         binding.lifecycleOwner = this
-
+        title = "Products"
         productAdapter = ProductAdapter(viewModel,
             object : CustomClickListner<Contact> {
                 override fun onClick(v: View, data: Contact) {

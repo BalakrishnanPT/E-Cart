@@ -33,7 +33,7 @@ class CartActivity : AppCompatActivity() {
                 this,
                 R.layout.activity_main
             )
-
+        title = "Cart"
 
         binding.lifecycleOwner = this
 
