@@ -4,7 +4,8 @@
     <item android:drawable="@android:color/white" />
     <item>
         <bitmap
-            android:gravity="center|"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:gravity="fill"
+            android:mipMap="true"
+            android:src="@drawable/spalsh" />
     </item>
 </layer-list>
