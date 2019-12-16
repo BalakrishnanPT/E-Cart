@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">E-Cart</string>
+    <string name="search_hint">Search Contacts</string>
+    <string name="title_activity_text">TextActivity</string>
+</resources>

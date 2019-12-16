@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import
+            alias="viewModel"
+            type="in.balakrishnan.e_cart.productListing.ProductViewModel" />
+
+        <variable
+            name="item"
+            type="in.balakrishnan.e_cart.repo.model.Product" />
+
+        <variable
+            name="listener"
+            type="in.balakrishnan.e_cart.util.CustomClickListner" />
+
+        <variable
+            name="productViewModel"
+            type="viewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivProductImage"
+            loadImage="@{item}"
+            android:layout_width="200dp"
+            android:layout_height="240dp"
+            android:layout_margin="8dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvProductTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{item.name}"
+            android:textColor="#1D1D1D"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivProductImage"
+            app:layout_constraintTop_toTopOf="@id/ivProductImage"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/tvProductDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:text="@{item.description}"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvProductTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvProductTitle"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/tvOriginaltPrice"
+            originalPrice="@{item}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textColor="#1D1D1D"
+            app:layout_constraintStart_toStartOf="@id/tvProductDesc"
+            app:layout_constraintTop_toBottomOf="@id/tvProductDesc"
+            tools:text="@tools:sample/cities" />
+
+        <TextView
+            android:id="@+id/tvDiscountPrice"
+            discountPrice="@{item}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:maxLines="1"
+            android:textColor="#1D1D1D"
+            app:layout_constraintEnd_toEndOf="@id/tvProductDesc"
+            app:layout_constraintTop_toBottomOf="@id/tvProductDesc"
+            tools:text="@tools:sample/cities" />
+
+        <Button
+            android:id="@+id/btnAddToCart"
+            nproduct="@{item}"
+            nviewModel="@{productViewModel}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="Add to cart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvProductDesc"
+            app:layout_constraintTop_toBottomOf="@id/tvDiscountPrice" />
+
+        <ImageButton
+            android:id="@+id/ivProductRemove"
+            pproduct="@{item}"
+            pviewModel="@{productViewModel}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_remove"
+            app:layout_constraintEnd_toStartOf="@id/ivProductAdd"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/tvProductDesc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDiscountPrice" />
+
+        <ImageButton
+            android:id="@+id/ivProductAdd"
+            pproduct="@{item}"
+            pviewModel="@{productViewModel}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:src="@drawable/ic_add"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/ivProductRemove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/ivProductRemove"
+            app:layout_constraintTop_toTopOf="@id/ivProductRemove" />
+
+        <TextView
+            android:id="@+id/tvCartDetails"
+            cproduct="@{item}"
+            cviewModel="@{productViewModel}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="1"
+            android:text="Quantity :1"
+            android:textColor="#1D1D1D"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/tvProductDesc"
+            app:layout_constraintTop_toBottomOf="@id/tvDiscountPrice"
+            tools:text="@tools:sample/lorem/random" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+
